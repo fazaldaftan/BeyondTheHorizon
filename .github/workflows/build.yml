@@ -1,0 +1,26 @@
+name: Build & Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET for Backend
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0'
+
+    - name: Build Backend
+      run: |
+        cd Backend
+        dotnet build  # Or FastAPI equivalent with pytest
+
+    - name: Unity Build (Placeholder)
+      run: echo "Unity headless build would go here (Unity License required)"
